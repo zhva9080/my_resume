@@ -1,0 +1,39 @@
+
+*{ margin: 0;
+    padding: 0;
+}
+    body{
+    background-image: url(trr.jpg);
+
+}
+.grandparent{
+    margin:150px 100px 0px 550px;
+
+}
+h1{
+    padding-left: 130px;
+    /* margin-bottom: 20px; */
+ color: white;
+}
+.parent{
+    width: 450px;
+    padding: 50px;
+    background-color: black;
+}
+p{
+    display: inline-block;
+    color: white;
+    font-weight: 700;
+}
+input{
+    display: inline-block;
+    margin-left: 50px;
+}
+.pass{
+    margin-left: 10px;
+}
+button{
+    margin-left: 120px;
+    width: 100px;
+
+}

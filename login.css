@@ -1,0 +1,36 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-image: url(1_pdf-corpus-world-data-visualization.jpeg);
+}
+.grandparent{
+    margin: 150px 100px 0px 550px;
+}
+
+h1{
+    padding-left: 140px;
+    margin-bottom: 20px;
+    color: white;
+}
+.parent{
+    border: 1px solid white;
+    width: 400px;
+    padding: 50px;
+}
+p{
+    display: inline-block;
+    color: white;
+}
+input{
+    display: inline-block;
+    margin-left: 50px;
+}
+.pass{
+    margin-left: 5px;
+}
+button{
+    margin: 15px 0 0 80px;
+    width: 150px;
+}
