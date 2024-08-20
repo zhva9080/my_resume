@@ -1,38 +1,47 @@
-
-*{ margin: 0;
+* {
+    margin: 0;
     padding: 0;
 }
-    body{
+
+body {
     background-image: url(bg.jpg);
 
 }
-.grandparent{
-    margin:150px 100px 0px 550px;
+
+.grandparent {
+    margin: 130px 100px 0px 550px;
 
 }
-h1{
+
+h1 {
     padding-left: 130px;
-    /* margin-bottom: 20px; */
- color: white;
+    margin-bottom: 20px;
+    color: rgb(21, 21, 75);
 }
-.parent{
+
+.parent {
     width: 450px;
     padding: 50px;
-    background-color: black;
+    border: 2px solid rgb(250, 224, 179);
+    border-radius: 15px;
 }
-p{
+
+p {
     display: inline-block;
-    color: white;
+    color:black;
     font-weight: 700;
 }
-input{
+
+input {
     display: inline-block;
     margin-left: 50px;
 }
-.pass{
+
+.pass {
     margin-left: 10px;
 }
-button{
+
+button {
     margin-left: 120px;
     width: 100px;
 
