@@ -30,7 +30,7 @@ function register() {
     userlist.name = a
     userlist.email = b
     userlist.pass = c
-    totall1ist.push(userlist)
+    totallist.push(userlist)
 
     localStorage.setItem('registers', JSON.stringify(totallist))
 
