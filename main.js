@@ -307,6 +307,7 @@ let all = JSON.parse(localStorage.getItem("registers_resume"))
 function rlists() {
   let listadd = ""
   for (let r in all) {
+    if(all[r].adminid==variable){
 
        listadd = listadd + `<tr>
     <td> ${all[r].name}  </td>
@@ -316,6 +317,7 @@ function rlists() {
     <td> <a href="new.html?index=${r}"><button>View</button></a></td>
     
     </tr>`
+  }
   }
   document.getElementById('resumeofall').innerHTML = listadd
 }
