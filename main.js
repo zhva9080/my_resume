@@ -35,7 +35,7 @@ function register() {
     localStorage.setItem('registers', JSON.stringify(totallist))
 
     alert("REGISTERED SUCCESSFULLY")
-    window.location = "login.html"
+    window.location = "index.html"
 
     document.getElementById("regname").value = ""
     document.getElementById("regemail").value = ""
