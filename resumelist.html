@@ -11,20 +11,25 @@
 
 <body>
     <button onclick="logout()" type="button" class="btn btn-link">LOG OUT</button>
-    <table class="table">
-        <thead class="table-dark">
-            <tr>
-                <th>NAME</th>
-                <th>Email</th>
-                <th>PHONE</th>
-                <th>ACTION</th>
-                <th>VIEW</th>
-            </tr>
-        </thead>
-        <tbody id="resumeofall"> 
+    <div class="resumelist"> <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-file-text-fill" viewBox="0 0 16 16">
+        <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2M5 4h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1m-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5M5 8h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1m0 2h3a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1"/>
+      </svg>
+        MY ALL RESUMES
+        <table class="table">
+            <thead class="table-dark">
+                <tr>
+                    <th>NAME</th>
+                    <th>Email</th>
+                    <th>PHONE</th>
+                    <th>ACTION</th>
+                    <th>VIEW</th>
+                </tr>
+            </thead>
+            <tbody id="resumeofall">
 
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    </div>
 </body>
 <script src="main.js"> </script>
 <script> rlists() </script>
