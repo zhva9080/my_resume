@@ -60,6 +60,7 @@ function login() {
     }
   }
   if (f == true) {
+    localStorage.setItem("logged","true")
     alert("SUCCESSFULLY LOGIN")
     window.location = "resume.html"
   }
@@ -75,6 +76,12 @@ function login() {
 
 
 }
+
+// -------------------------------LOGOUT-------------------------
+function logout(){
+  localStorage.removeItem('logged')
+  window.location="index.html"
+  }
 
 //  -------------------------- RESUME -----------------------------------------------------
 let variable = localStorage.getItem('logemail')

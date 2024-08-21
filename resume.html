@@ -14,6 +14,8 @@
     <img class="logo" src="resume-computer-icons-curriculum-vitae-clip-art-resume-icon-removebg-preview.png">
     <p>MY RESUME <img src="2344200.png">
     </p>
+    <button onclick="logout()" type="button" class="btn btn-link">LOG OUT</button>
+
     <div class="grandparent">
         <center>
 
@@ -208,6 +210,8 @@
             <!-- ------------------------------------------------------------------------------------------------------------------- -->
             <br>
             <button onclick="submit()" type="button" class="btn btn-success">SUBMIT</button>
+            <a href="resumelist.html" type="button" class="btn btn-secondary">VIEW</a>
+
 
 
 
@@ -215,5 +219,12 @@
     </div>
 </body>
 <script src="main.js"></script>
+<script>
+    let loggedin = localStorage.getItem("logged")
+   
+   if(!loggedin){
+       window.location='index.html'
+   }
+   </script>
 
 </html>

@@ -98,5 +98,13 @@ strong{
 .nat{
     margin-left: 35px;
 }
-
-
+.bi-geo-alt-fill{
+    color: red;
+    margin-right: 5px;
+}
+.bi-envelope{
+    margin-right: 5px;
+}
+.bi-telephone-outbound{
+    margin-right: 5px;
+}
