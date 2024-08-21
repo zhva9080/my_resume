@@ -6,7 +6,23 @@ body{
     background-image: url(1_pdf-corpus-world-data-visualization.jpeg);
 }
 .grandparent{
-    margin: 150px 100px 0px 550px;
+    margin: 150px 100px 0px 400px;
+    display: inline-block;
+}
+.section{
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 120px;
+}
+.sec{
+    display: inline-block;
+    font-family: 'Times New Roman', Times, serif;
+}
+img{
+    width: 200px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 110px;
 }
 
 h1{
@@ -30,18 +46,12 @@ input{
 .pass{
     margin-left: 5px;
 }
-.btn-outline-primary{
+.btn-primary{
     margin: 15px 0 20px 80px;
     width: 150px;
-
 }
 a{
-
- 
  text-decoration: none;
  margin-left: 110px;
- 
-
-
- 
 }
+
