@@ -3,10 +3,16 @@
     padding: 0;
 }
 .resumelist{
-    margin: 20px 0 50px 640px;
+    margin: 20px 0 50px 620px;
     font-size: x-large;
 
 }
 a{
 margin-left: 400px;
+}
+.vieww{
+    text-align: center;
+}
+.bi-box-arrow-left{
+    margin-right: 5px;
 }
