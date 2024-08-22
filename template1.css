@@ -1,0 +1,42 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.grandparent{ margin:10px;
+
+}
+.username{
+    padding: 50px;
+    background-color: beige;
+}
+.bi-file-earmark-person{
+    display: inline-block;
+}
+.hname{
+    display: inline-block;
+    
+}
+.section{
+    margin-top: 10px;
+    background-color:rgb(238, 238, 168)
+}
+.section1{
+display: inline-block;
+width: 25%;
+padding: 15px;
+background-color: beige;
+}
+.section2{
+    display: inline-block;
+    width: 73.5%;
+    vertical-align: top;
+    margin: 10px 0 0 10px;
+}
+
+.obj{
+    margin: 25px;
+}
+h2{
+    text-align: center;
+    margin: 20px 0 20px 0;
+}

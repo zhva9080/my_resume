@@ -1,51 +1,87 @@
-//  --------------REGISTER-----------------------------------------
-
-if (!localStorage.getItem('registers')) {
-  localStorage.setItem('registers', JSON.stringify([]))
-}
-
-let totallist = JSON.parse(localStorage.getItem('registers'))
 
 
-function register() {
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
+  import { addDoc,collection } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyCcDyvnJsapbbUfV-Nes96F5_XZWSEugc0",
+    authDomain: "resume-builder-94911.firebaseapp.com",
+    projectId: "resume-builder-94911",
+    storageBucket: "resume-builder-94911.appspot.com",
+    messagingSenderId: "1042374202278",
+    appId: "1:1042374202278:web:eebee8f23709372466b567",
+    measurementId: "G-YG5FCWX4NK"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app)
+
+async function register1(){
 
   let a = document.getElementById("regname").value
   let b = document.getElementById("regemail").value
   let c = document.getElementById("regpass").value
 
-  ab = JSON.parse(localStorage.getItem('registers'))
-  cd = false
-  for (let n of ab) {
-    if (n.email == b) {
-      cd = true
-    }
-
-  }
-  if (cd == true) {
-    alert("you are already registered")
-  }
-  else {
-
-    let userlist = {}
-    userlist.name = a
-    userlist.email = b
-    userlist.pass = c
-    totallist.push(userlist)
-
-    localStorage.setItem('registers', JSON.stringify(totallist))
-
-    alert("REGISTERED SUCCESSFULLY")
-    window.location = "index.html"
-
-    document.getElementById("regname").value = ""
-    document.getElementById("regemail").value = ""
-    document.getElementById("regpass").value = ""
-
-
-
-
-  }
+  await addDoc(collection(db,"register"),{
+    name : a,
+    email : b,
+    password :c
+  })
+  
 }
+window.register1=register1
+
+
+
+
+//  --------------REGISTER-----------------------------------------
+
+// if (!localStorage.getItem('registers')) {
+//   localStorage.setItem('registers', JSON.stringify([]))
+// }
+
+// let totallist = JSON.parse(localStorage.getItem('registers'))
+
+
+// function register() {
+
+//   let a = document.getElementById("regname").value
+//   let b = document.getElementById("regemail").value
+//   let c = document.getElementById("regpass").value
+
+//   ab = JSON.parse(localStorage.getItem('registers'))
+//   cd = false
+//   for (let n of ab) {
+//     if (n.email == b) {
+//       cd = true
+//     }
+
+//   }
+//   if (cd == true) {
+//     alert("you are already registered")
+//   }
+//   else {
+
+//     let userlist = {}
+//     userlist.name = a
+//     userlist.email = b
+//     userlist.pass = c
+//     totallist.push(userlist)
+
+//     localStorage.setItem('registers', JSON.stringify(totallist))
+
+//     alert("REGISTERED SUCCESSFULLY")
+//     window.location = "index.html"
+
+//     document.getElementById("regname").value = ""
+//     document.getElementById("regemail").value = ""
+//     document.getElementById("regpass").value = ""
+
+
+
+
+//   }
+// }
 
 //  ------------------------LOGIN-------------------------------------------------
 
