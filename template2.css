@@ -1,0 +1,55 @@
+*{ margin: 0;
+    padding: 0;
+
+}
+.username{
+    background-color:gray;
+    color: white;
+    text-align: center;
+    padding: 20px;
+
+}
+.address{
+display: inline-block;
+padding-right: 10px;
+}
+.email{
+    display: inline-block;
+    padding-right: 10px;
+    
+}
+.phone{
+    display: inline-block;
+}
+.obj{
+    padding: 10px;
+
+}
+.section1{
+    width: 75%;
+    background-color:black;
+    color: white;
+    display: inline-block;
+    text-align: center;
+    padding: 60px 20px;
+    margin-left: 5px;
+
+}
+.section2{
+    display: inline-block;
+    background-color: gray;
+    vertical-align: top;
+    margin-left: 5px;
+    color: black;
+    padding: 40px 40px;
+}
+.table{
+    width: 80%;
+    margin-left: 80px;
+}
+h2{
+    margin-bottom: 18px;
+}
+.pinfo{
+padding: 20px;
+}

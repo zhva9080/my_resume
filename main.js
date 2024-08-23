@@ -1,7 +1,7 @@
 
 
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
-  import { getFirestore,addDoc,collection } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js";
+  import { addDoc,collection,getFirestore } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js";
 
   const firebaseConfig = {
     apiKey: "AIzaSyCcDyvnJsapbbUfV-Nes96F5_XZWSEugc0",
@@ -27,7 +27,9 @@ async function register1(){
     email : b,
     password :c
   })
-  
+  document.getElementById("regname").value=""
+  document.getElementById("regemail").value=""
+  document.getElementById("regpass").value=""
 }
 window.register1=register1
 
@@ -146,12 +148,12 @@ function save(a, key, pkey) {
   }
 
 }
-
+window.save=save
 
 // ---------------------onclick---- SKILLS LANG--------------------------------------
 
 function addbox(id, key, pkey) {
-  n = document.getElementById(id).value
+  let n = document.getElementById(id).value
   if (pkey) {
     resume[pkey][key].push(n)
     display(key, pkey)
@@ -161,18 +163,20 @@ function addbox(id, key, pkey) {
   else {
     resume[key].push(n)
     display(key)
-    document.getElementById(id).value = ""
+    // document.getElementById(id).value = ""
   }
+  document.getElementById(id).value = ""
   display(key,pkey)
 }
+window.addbox=addbox
 
 // --------------------------- SKILLS LANG ADD ----------------------------------------------------
 
 function display(keyname, pkeyname) {
-  userlist = ""
+ let  userlist = ""
   if (pkeyname) {
     for (let each in resume[pkeyname][keyname]) {
-      if(resume[pkeyname][keyname][each] !=""){
+      if(resume[pkeyname][keyname][each] !="")
       userlist = userlist + ` <tr> 
     <td> ${resume[pkeyname][keyname][each]} </td>
     <td> <button onclick="deletesk('${each}','${keyname}','${pkeyname}')"> delete </button></td>
@@ -180,23 +184,23 @@ function display(keyname, pkeyname) {
                              
                           </tr> `
     
-                }          }
+                         }
     document.getElementById("languages").innerHTML = userlist;
   }
   else {
     for (let each in resume[keyname]) {
-if(resume[keyname][each] !=""){
+if(resume[keyname][each] !="")
       userlist = userlist + ` <tr>
        <td>${resume[keyname][each]}</td>
        <td> <button onclick="deletesk('${each}','${keyname}')"> delete </button></td>
 
    </tr>`
-    }
+  
   }
     document.getElementById("skills").innerHTML = userlist;
   }
+  console.log(userlist)
 }
-
 // --------------------- SKILLS LANG DELETE ---------------------------------------------
 
 function deletesk(index, keyname, pkeyname) {
@@ -226,6 +230,7 @@ function deletesk(index, keyname, pkeyname) {
   display(keyname, pkeyname)
 
 }
+window.deletesk=deletesk
 
 
 // ----------------------EDUCATION WORK PROJECT-------------------------------------------------------
@@ -269,11 +274,11 @@ function listSave(key, id, a, b, c, d) {
   display1(key, id, a, b, c, d)
 
 }
-
+window.listSave=listSave
 // ---------------------- ADD EDUCATION PROJECT WORK ---------------------------------------------------------
 
 function display1(keyname, idname, a1, b1, c1, d1) {
-  newlist = ""
+  let newlist = ""
   if (d1) {
     for (let each in resume[keyname]){
       newlist = newlist + `<tr>
@@ -313,7 +318,6 @@ function display1(keyname, idname, a1, b1, c1, d1) {
   }
   document.getElementById(idname).innerHTML = newlist;
 }
-
 // ------------------------DELETE EDUCATION PROJECT WORK----------------------------------------------------
 
 function deleteed(index, idn, keyn, an, bn, cn, dn) {
@@ -326,22 +330,26 @@ function deleteed(index, idn, keyn, an, bn, cn, dn) {
   resume[keyn] = dlist
   display1(keyn, idn, an, bn, cn, dn)
 }
-
+window.deleteed=deleteed
 
 // ----------------------------- SUBMIT TO LOCALSTORAGE --------------------------------------------
 
-if (!localStorage.getItem('registers_resume')) {
-  localStorage.setItem('registers_resume', JSON.stringify([]))
-}
+// if (!localStorage.getItem('registers_resume')) {
+//   localStorage.setItem('registers_resume', JSON.stringify([]))
+// }
 
-let users_resume = JSON.parse(localStorage.getItem("registers_resume"))
-function submit() {
-  users_resume.push(resume)
-  localStorage.setItem("registers_resume", JSON.stringify(users_resume))
-  alert("SUCCESSFULLY SAVED")
-  window.location = "resumelist.html"
-}
+// let users_resume = JSON.parse(localStorage.getItem("registers_resume"))
+async function submit() {
 
+  await addDoc(collection(db,"resume"),{
+    resume
+  })
+  // users_resume.push(resume)
+  // localStorage.setItem("registers_resume", JSON.stringify(users_resume))
+  // alert("SUCCESSFULLY SAVED")
+  // window.location = "resumelist.html"
+}
+window.submit=submit
 
 // ------------------------------------------- ADD RESUME LIST -------------------------------------------------------------
 
@@ -384,6 +392,7 @@ function deleterr(index) {
   localStorage.setItem("registers_resume", JSON.stringify(tlist))
   rlists()
 }
+window.deleterr=deleterr
 
 
 // --------------------------------------------------------------------------------------------------
