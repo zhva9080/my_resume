@@ -1,42 +1,52 @@
 
 
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
-  import { addDoc,collection,getFirestore } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
+import { addDoc, collection, getFirestore, getDocs } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js";
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyCcDyvnJsapbbUfV-Nes96F5_XZWSEugc0",
-    authDomain: "resume-builder-94911.firebaseapp.com",
-    projectId: "resume-builder-94911",
-    storageBucket: "resume-builder-94911.appspot.com",
-    messagingSenderId: "1042374202278",
-    appId: "1:1042374202278:web:eebee8f23709372466b567",
-    measurementId: "G-YG5FCWX4NK"
-  };
+const firebaseConfig = {
+  apiKey: "AIzaSyCcDyvnJsapbbUfV-Nes96F5_XZWSEugc0",
+  authDomain: "resume-builder-94911.firebaseapp.com",
+  projectId: "resume-builder-94911",
+  storageBucket: "resume-builder-94911.appspot.com",
+  messagingSenderId: "1042374202278",
+  appId: "1:1042374202278:web:eebee8f23709372466b567",
+  measurementId: "G-YG5FCWX4NK"
+};
 
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app)
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app)
 
-async function register1(){
+async function register1() {
 
   let a = document.getElementById("regname").value
   let b = document.getElementById("regemail").value
   let c = document.getElementById("regpass").value
 
-  await addDoc(collection(db,"register"),{
-    name : a,
-    email : b,
-    password :c
+  await addDoc(collection(db, "register"), {
+    name: a,
+    email: b,
+    password: c
   })
-  document.getElementById("regname").value=""
-  document.getElementById("regemail").value=""
-  document.getElementById("regpass").value=""
+  document.getElementById("regname").value = ""
+  document.getElementById("regemail").value = ""
+  document.getElementById("regpass").value = ""
+
+  alert("Registered Succesfully")
+
+  window.location = "index.html"
 }
-window.register1=register1
+window.register1 = register1
+
+let eresume = []
+getDocs(collection(db, "register")).then(loginpage => {
+  loginpage.forEach((each, i) => {
+    eresume.push(each.data())
+  })
+})
 
 
 
-
-//  --------------REGISTER-----------------------------------------
+//---------------------------= REGISTER =----------------------------------------
 
 // if (!localStorage.getItem('registers')) {
 //   localStorage.setItem('registers', JSON.stringify([]))
@@ -85,41 +95,62 @@ window.register1=register1
 //   }
 // }
 
-//  ------------------------LOGIN-------------------------------------------------
+//  -----------------------------[LOGIN ] -------------------------------------------------
 
-function login() {
-  let d = document.getElementById("logemail").value
-  let e = document.getElementById("logpass").value
+async function login() {
 
-  let f = false
-  for (let each of totallist) {
-    if (each.email == d && each.pass == e) {
-      f = true
+  let d = document.getElementById("logemail").value;
+  let e = document.getElementById("logpass").value;
+
+  let tf = false;
+  for (let eachh in eresume) {
+
+    if (d == eresume[eachh].email && e == eresume[eachh].password) {
+      tf = true
     }
   }
-  if (f == true) {
-    localStorage.setItem("logged","true")
-    alert("SUCCESSFULLY LOGIN")
+  if (tf == true) {
+    alert("login succesfully")
     window.location = "resume.html"
   }
-  else if (f == false) {
-    alert("FAILED TO LOGIN")
+  else if (tf == false) {
+    alert("login failed")
   }
-
-  localStorage.setItem('logemail', d)
-
   document.getElementById("logemail").value = ""
   document.getElementById("logpass").value = ""
 
 
 
-}
+  // let f = false;
+  // for (let each of totallist) {
+  //   if (each.email == d && each.pass == e) {
+  //     f = true
+  //   }
+  // }
+  // if (f == true) {
+  //   localStorage.setItem("logged","true")
+  //   alert("SUCCESSFULLY LOGIN")
+  //   window.location = "resume.html"
+  // }
+  // else if (f == false) {
+  //   alert("FAILED TO LOGIN")
+  // }
 
-// -------------------------------LOGOUT-------------------------
-function logout(){
+  // localStorage.setItem('logemail', d)
+
+  // document.getElementById("logemail").value = ""
+  // document.getElementById("logpass").value = ""
+
+
+
+}
+window.login = login
+
+// -------------------------------[ LOGOUT ]---------------------------------
+function logout() {
   localStorage.removeItem('logged')
-  window.location="index.html"
-  }
+  window.location = "index.html"
+}
 
 //  -------------------------- RESUME -----------------------------------------------------
 let variable = localStorage.getItem('logemail')
@@ -148,7 +179,7 @@ function save(a, key, pkey) {
   }
 
 }
-window.save=save
+window.save = save
 
 // ---------------------onclick---- SKILLS LANG--------------------------------------
 
@@ -166,37 +197,37 @@ function addbox(id, key, pkey) {
     // document.getElementById(id).value = ""
   }
   document.getElementById(id).value = ""
-  display(key,pkey)
+  display(key, pkey)
 }
-window.addbox=addbox
+window.addbox = addbox
 
 // --------------------------- SKILLS LANG ADD ----------------------------------------------------
 
 function display(keyname, pkeyname) {
- let  userlist = ""
+  let userlist = ""
   if (pkeyname) {
     for (let each in resume[pkeyname][keyname]) {
-      if(resume[pkeyname][keyname][each] !="")
-      userlist = userlist + ` <tr> 
+      if (resume[pkeyname][keyname][each] != "")
+        userlist = userlist + ` <tr> 
     <td> ${resume[pkeyname][keyname][each]} </td>
     <td> <button onclick="deletesk('${each}','${keyname}','${pkeyname}')"> delete </button></td>
                           
                              
                           </tr> `
-    
-                         }
+
+    }
     document.getElementById("languages").innerHTML = userlist;
   }
   else {
     for (let each in resume[keyname]) {
-if(resume[keyname][each] !="")
-      userlist = userlist + ` <tr>
+      if (resume[keyname][each] != "")
+        userlist = userlist + ` <tr>
        <td>${resume[keyname][each]}</td>
        <td> <button onclick="deletesk('${each}','${keyname}')"> delete </button></td>
 
    </tr>`
-  
-  }
+
+    }
     document.getElementById("skills").innerHTML = userlist;
   }
   console.log(userlist)
@@ -230,7 +261,7 @@ function deletesk(index, keyname, pkeyname) {
   display(keyname, pkeyname)
 
 }
-window.deletesk=deletesk
+window.deletesk = deletesk
 
 
 // ----------------------EDUCATION WORK PROJECT-------------------------------------------------------
@@ -274,13 +305,13 @@ function listSave(key, id, a, b, c, d) {
   display1(key, id, a, b, c, d)
 
 }
-window.listSave=listSave
+window.listSave = listSave
 // ---------------------- ADD EDUCATION PROJECT WORK ---------------------------------------------------------
 
 function display1(keyname, idname, a1, b1, c1, d1) {
   let newlist = ""
   if (d1) {
-    for (let each in resume[keyname]){
+    for (let each in resume[keyname]) {
       newlist = newlist + `<tr>
 
       <td> ${resume[keyname][each][a1]}</td>
@@ -318,7 +349,7 @@ function display1(keyname, idname, a1, b1, c1, d1) {
   }
   document.getElementById(idname).innerHTML = newlist;
 }
-// ------------------------DELETE EDUCATION PROJECT WORK----------------------------------------------------
+// --------------------------------DELETE EDUCATION PROJECT WORK----------------------------------------------------
 
 function deleteed(index, idn, keyn, an, bn, cn, dn) {
   let dlist = []
@@ -330,37 +361,39 @@ function deleteed(index, idn, keyn, an, bn, cn, dn) {
   resume[keyn] = dlist
   display1(keyn, idn, an, bn, cn, dn)
 }
-window.deleteed=deleteed
+window.deleteed = deleteed
 
-// ----------------------------- SUBMIT TO LOCALSTORAGE --------------------------------------------
+// -------------------------------------- SUBMIT TO LOCALSTORAGE ---------------------------------------------
 
 // if (!localStorage.getItem('registers_resume')) {
 //   localStorage.setItem('registers_resume', JSON.stringify([]))
 // }
 
 // let users_resume = JSON.parse(localStorage.getItem("registers_resume"))
-async function submit() {
+async function submit1() {
 
-  await addDoc(collection(db,"resume"),{
+  await addDoc(collection(db, "resume"), {
     resume
   })
+  alert("RESUME SUBMITTED SUCCESSFULLY")
   // users_resume.push(resume)
   // localStorage.setItem("registers_resume", JSON.stringify(users_resume))
   // alert("SUCCESSFULLY SAVED")
   // window.location = "resumelist.html"
 }
-window.submit=submit
+window.submit1 = submit1
 
-// ------------------------------------------- ADD RESUME LIST -------------------------------------------------------------
+// ------------------------------------------- ADD RESUME LIST -------------------------------------------------
 
 
 let all = JSON.parse(localStorage.getItem("registers_resume"))
 function rlists() {
   let listadd = ""
   for (let r in all) {
-    if(all[r].adminid==variable){
+    if (all[r].adminid == variable){
 
-       listadd = listadd + `<tr>
+      listadd = listadd +
+        `<tr>
     <td> ${all[r].name}  </td>
     <td> ${all[r].email} </td>
     <td> ${all[r].phone} </td>
@@ -374,12 +407,12 @@ function rlists() {
 </svg></span></a></td>
     
     </tr>`
-  }
+    }
   }
   document.getElementById('resumeofall').innerHTML = listadd
 }
 
-// ------------------------- DLT RESUME LIST---------------------------------------------------
+// -------------------------------------------- DLT RESUME LIST---------------------------------------------------
 
 function deleterr(index) {
   let tlist = [];
@@ -392,7 +425,7 @@ function deleterr(index) {
   localStorage.setItem("registers_resume", JSON.stringify(tlist))
   rlists()
 }
-window.deleterr=deleterr
+window.deleterr = deleterr
 
 
 // --------------------------------------------------------------------------------------------------
