@@ -31,24 +31,25 @@
         <thead class="table-dark">
             <tr>
                 <th>NAME</th>
-                <th>Email</th>
+                <th>EMAIL</th>
                 <th>PHONE</th>
                 <th>ACTION</th>
+                <th>EDIT</th>
                 <th class="vieww">VIEW</th>
             </tr>
         </thead>
         <tbody id="resumeofall">
-
+            
         </tbody>
     </table>
 </body>
-<script src="main.js"> </script>
-<script> rlists() </script>
-<!-- <script>
+<script  src="main.js" type="module"> </script>
+<script  type="module"> rlists() </script>
+<script>
     let loggedin = localStorage.getItem("logged")
-
-    if (!loggedin) {
-        window.location = 'index.html'
-    }
-</script> -->
+   
+   if(!loggedin){
+       window.location='index.html'
+   }
+   </script>
 </html>

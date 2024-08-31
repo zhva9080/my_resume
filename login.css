@@ -52,6 +52,12 @@ input{
 }
 a{
  text-decoration: none;
- margin-left: 110px;
+ margin-left: 20px;
+ display: inline-block;
+}
+h6{
+    display: inline-block;
+    color: white;
+    margin-left: 60px;
 }
 
